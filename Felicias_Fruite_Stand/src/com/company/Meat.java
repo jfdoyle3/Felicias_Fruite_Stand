@@ -2,6 +2,7 @@ package com.company;
 
 public class Meat extends Product {
 
+    //TODO need to be more descriptive on this
     private String cutStyle;
     private String animal;
 
