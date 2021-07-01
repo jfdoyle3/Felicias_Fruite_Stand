@@ -26,8 +26,19 @@ public class Main {
         products.add(orange);
         products.add(pear);
 
+
         displayProduct(products);
+
+        System.out.println();
         displayProduct(products, 2);
+
+        System.out.println("\n\nInstance of Meat");
+        displayProduct(products,"meat");
+
+        System.out.println("\nInstance of Fruit");
+        displayProduct(products,"fruit");
+
+
 
     }
 
@@ -37,17 +48,24 @@ public class Main {
             System.out.println(product);
     }
 
-    // TODO built a skeleton method, need to build this out more
+
     public static void displayProduct(List<Product> product, String type) {
+
         switch (type) {
             case "meat":
-                System.out.println("meat");
+                for(Product item : product){
+                    if (item instanceof Meat)
+                        System.out.println(item);
+                }
                 break;
             case "fruit":
-                System.out.println("fruit");
+                for(Product item : product){
+                    if(item instanceof Fruit)
+                        System.out.println(item);
+                }
                 break;
             default:
-                System.out.println("no such type");
+                System.out.println("No such type");
         }
     }
 
