@@ -7,7 +7,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-
+            // fix this and do assignment
         List<Product> products = new ArrayList<>();
 
         Product fillet = new Meat("Meat", 5, "fillet ", "Bison");
