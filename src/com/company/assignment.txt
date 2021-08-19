@@ -11,7 +11,7 @@ Completed           | a Store class
 Completed           |  has a store balance
 Completed           |  stores a collection of the products it has available to purchase
 Completed           |  can add products to the collection by spending its balance
-   can sell products which add to its balance and updates the collection of products
+Completed           |  can sell products which add to its balance and updates the collection of products
 Completed           |  can throw away products.
 
 Completed           | Console class

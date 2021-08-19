@@ -1,5 +1,7 @@
 package com.company.products;
 
+import com.company.store.Store;
+
 public class Product {
 
     //TODO need to be more descriptive on this
@@ -15,6 +17,14 @@ public class Product {
 
     public int getSupplierCost() {
         return supplierCost;
+    }
+
+    public int getInventoryAmount() {
+        return inventoryAmount;
+    }
+
+    public void updateInventory(int qty){
+        this.inventoryAmount=qty;
     }
 
     @Override
