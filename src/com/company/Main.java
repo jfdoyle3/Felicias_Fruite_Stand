@@ -1,5 +1,11 @@
 package com.company;
 
+import com.company.console.Console;
+import com.company.products.Produce;
+import com.company.products.Meat;
+import com.company.products.Product;
+import com.company.store.Store;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,16 +13,25 @@ public class Main {
 
 
     public static void main(String[] args) {
-            // fix this and do assignment
+
+        Store market=new Store(100);
+        market.openForBusiness();
+
+
+
+    }
+
+    public static void test(){
+        Console console=new Console();
         List<Product> products = new ArrayList<>();
 
-        Product fillet = new Meat("Meat", 5, "fillet ", "Bison");
-        Product steak = new Meat("Pork", 10, "center cut", "Pork");
-        Product breast = new Meat("Poultry", 5, "breast", "Chicken");
+        Product fillet = new Meat("Meat", 5, 20, "Fillet","Bison");
+        Product steak = new Meat("Pork", 10,  10,"Center cut","Pork");
+        Product breast = new Meat("Poultry", 5, 10,"breast", "Chicken");
 
-        Product apple = new Fruit("Fruit", 12, "apple");
-        Product orange = new Fruit("Fruit", 12, "orange");
-        Product pear = new Fruit("Fruit", 12, "pear");
+        Product apple = new Produce("Fruit", 12, 5,"apple");
+        Product orange = new Produce("Fruit", 12, 10,"orange");
+        Product pear = new Produce("Fruit", 12, 20,"pear");
 
         products.add(steak);
         products.add(breast);
@@ -27,49 +42,18 @@ public class Main {
         products.add(pear);
 
 
-        displayProduct(products);
+        console.displayProduct(products);
 
         System.out.println();
-        displayProduct(products, 2);
+        console.displayProduct(products, 2);
 
         System.out.println("\n\nInstance of Meat");
-        displayProduct(products,"meat");
+        console.displayProduct(products,"meat");
 
         System.out.println("\nInstance of Fruit");
-        displayProduct(products,"fruit");
+        console.displayProduct(products,"fruit");
 
-
-
+        console.cashier();
     }
 
-    public static void displayProduct(List<Product> products) {
-        System.out.println("List of Products:");
-        for (Product product : products)
-            System.out.println(product);
-    }
-
-
-    public static void displayProduct(List<Product> product, String type) {
-
-        switch (type) {
-            case "meat":
-                for(Product item : product){
-                    if (item instanceof Meat)
-                        System.out.println(item);
-                }
-                break;
-            case "fruit":
-                for(Product item : product){
-                    if(item instanceof Fruit)
-                        System.out.println(item);
-                }
-                break;
-            default:
-                System.out.println("No such type");
-        }
-    }
-
-    public static void displayProduct(List<Product> products, int index) {
-        System.out.printf("\nProduct in list at index %d is:\n%s", index, products.get(index));
-    }
 }
