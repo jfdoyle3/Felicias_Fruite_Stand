@@ -25,9 +25,9 @@ public class Store {
         Product meat = new Meat("Meat", 5, 10, "fillet ", "Bison");
       //  buyFromSupplier(item, meat);
        // addToStore(item, 10);
-        // console.onDisplayOptions(this,item,meat);
+        ;
         console.warehouseOptions(this);
-
+// console.onDisplayOptions(this,item,meat)
 
     }
 

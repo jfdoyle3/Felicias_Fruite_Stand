@@ -55,7 +55,7 @@ public class Console {
         System.out.println(store.toString());
     }
 
-    public static void onDisplayOptions(Store store, String item, Product product) {
+    public static void onDisplayOptions(Store store, Product product) {
         while (true) {
             System.out.println("Options:\n1. Show Goods\n2. Cash Register");
             int selection = input.nextInt();
@@ -123,6 +123,17 @@ public class Console {
         System.out.println("List of Products:");
         for (Product product : products)
             System.out.println(product);
+    }
+
+    public void storeMenu(Store store, String item, Product product){
+        System.out.println("Manager Store");
+        System.out.println("1. Warehouse manager");
+        System.out.println("2. Store manager");
+        int choice=input.nextInt();
+        if(choice==1)
+            warehouseOptions(store);
+        if(choice==2)
+            onDisplayOptions(store,product);
     }
 
 
