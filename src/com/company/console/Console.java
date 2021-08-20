@@ -5,8 +5,10 @@ import com.company.products.Produce;
 import com.company.products.Product;
 import com.company.store.Store;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 /*
@@ -21,43 +23,50 @@ public class Console {
     private static Scanner input = new Scanner(System.in);
 
     public static void warehouseOptions(Store store) {
-        System.out.println("Options:\n1. Show Inventory\n2. Buy from Supplier\n3. Trash bad inventory\n4. Add to Display");
-        int selection = input.nextInt();
-        switch (selection) {
-            case 1:
-                System.out.println(store.toString());
-                break;
-            case 2: {
-                supplierTransaction(store);
-                break;
+        boolean exit = true;
+        while (exit) {
+            System.out.println("Options:\n1. Show Inventory\n2. Buy from Supplier\n3. Trash bad inventory\n4. Add to Display\n5. Quit");
+            System.out.print("\nChoice? ");
+            int selection = input.nextInt();
+            switch (selection) {
+                case 1:
+                    System.out.println(store.toString());
+                    break;
+                case 2: {
+                    supplierTransaction(store);
+                    break;
+                }
+                case 3:
+                    System.out.println("remove from inventory");
+                    // store.removeFromWarehouse();
+                    break;
+                case 4:
+                    System.out.println("Add to Display");
+                    break;
+                case 5:
+                    exit = false;
+                    break;
+                default:
+                    System.out.println("invalid selection - try again");
             }
-            case 3:
-                System.out.println("remove from inventory");
-               // store.removeFromWarehouse();
-                break;
-            case 4:
-                System.out.println("Add to Display");
-                break;
-            default:
-                System.out.println("invalid selection - try again");
-
-                System.out.println("continue on ....");
         }
     }
 
     private static void supplierTransaction(Store store) {
-        List<Product> inventory=supplierInventory();
+        List<Product> inventory = supplierInventory();
         System.out.println("meat\nproduce");
-        String choice=input.next();
-        displayProduct(inventory,choice);
-        int item=input.nextInt();
-        store.buyFromSupplier(choice,inventory.get(item));
+        String choice = input.next();
+        displayProduct(inventory, choice);
+        int item = input.nextInt();
+        store.buyFromSupplier(choice, inventory.get(item));
         System.out.println(store.toString());
     }
 
-    public static void onDisplayOptions(Store store, Product product) {
-        while (true) {
-            System.out.println("Options:\n1. Show Goods\n2. Cash Register");
+    public static void onDisplayOptions(Store store, String item, Product product) {
+        boolean exit = true;
+        while (exit) {
+            System.out.println("Options:\n1. Show Goods\n2. Cash Register\n3. Quot");
+            System.out.print("\nChoice? ");
             int selection = input.nextInt();
             switch (selection) {
                 case 1:
@@ -69,24 +78,25 @@ public class Console {
                     store.buyFromStore(product, qty);
                     break;
                 }
-
+                case 3:
+                    exit = false;
                 default:
                     System.out.println("invalid selection - try again");
             }
-            System.out.println("continue on ....");
+
         }
     }
 
     private static List<Product> supplierInventory() {
         List<Product> products = new ArrayList<>();
 
-        Product fillet = new Meat("Meat", 5, 30, "fillet ", "Cow");
+        Product fillet = new Meat("Beef", 5, 30, "fillet ", "Cow");
         Product steak = new Meat("Pork", 10, 20, "center cut", "Pork");
         Product breast = new Meat("Poultry", 5, 10, "breast", "Chicken");
 
         Product lettuce = new Produce("Vegetable", 12, 20, "lettuce");
         Product orange = new Produce("Fruit", 12, 50, "orange");
-        Product potato = new Produce("Vegetable", 12, 20, "potato");
+        Product potato = new Produce("Root Vegetable", 12, 20, "potato");
 
         products.add(steak);
         products.add(breast);
@@ -103,15 +113,15 @@ public class Console {
 
         switch (type) {
             case "meat":
-                for (int idx=0; idx<product.size(); idx++){
+                for (int idx = 0; idx < product.size(); idx++) {
                     if (product.get(idx) instanceof Meat)
-                        System.out.println(idx+": "+product.get(idx));
+                        System.out.println(idx + ": " + product.get(idx));
                 }
                 break;
             case "produce":
-                for (int idx=0; idx<product.size(); idx++){
+                for (int idx = 0; idx < product.size(); idx++) {
                     if (product.get(idx) instanceof Produce)
-                        System.out.println(idx+": "+product.get(idx));
+                        System.out.println(idx + ": " + product.get(idx));
                 }
                 break;
             default:
@@ -125,16 +135,37 @@ public class Console {
             System.out.println(product);
     }
 
-    public void storeMenu(Store store, String item, Product product){
-        System.out.println("Manager Store");
-        System.out.println("1. Warehouse manager");
-        System.out.println("2. Store manager");
-        int choice=input.nextInt();
-        if(choice==1)
-            warehouseOptions(store);
-        if(choice==2)
-            onDisplayOptions(store,product);
+    public static void storeMenu() {
+        boolean exit = true;
+        while (exit) {
+            System.out.println("Manager Store\n1. Warehouse manager\n2. Store manager\n3. Quit");
+            System.out.print("\nChoice? ");
+            int choice = input.nextInt();
+            switch (choice) {
+                case 1:
+                    // warehouseOptions(store);
+                    System.out.println("warehouse");
+                    break;
+                case 2:
+                    // onDisplayOptions(store, product);
+                    System.out.println("sales floor");
+                    break;
+                case 3:
+                    exit = false;
+                    break;
+                default:
+                    System.out.println("invalid choice");
+            }
+
+        }
+
     }
 
+    public static String displayPrice(Long price) {
+        NumberFormat n = NumberFormat.getCurrencyInstance(Locale.US);
+        String s = n.format(price / 100.0);
+        return s;
+    }
 
 }
+

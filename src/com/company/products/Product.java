@@ -7,15 +7,15 @@ public class Product {
     //TODO need to be more descriptive on this
     protected String type;
     protected int inventoryAmount;
-    protected int supplierCost;
+    protected long supplierCost;
 
-    public Product(String type, int inventoryAmount, int supplierCost) {
+    public Product(String type, int inventoryAmount, long supplierCost) {
         this.type = type;
         this.supplierCost=supplierCost;
         this.inventoryAmount = inventoryAmount;
     }
 
-    public int getSupplierCost() {
+    public long getSupplierCost() {
         return supplierCost;
     }
 

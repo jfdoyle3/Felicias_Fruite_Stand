@@ -8,26 +8,28 @@ import java.util.HashMap;
 
 public class Store {
 
-    private int storeBalance;
+    private long storeBalance;
     private HashMap<String, Product> warehouse;
-    private HashMap<Product, Integer> availableGoods;
+    private HashMap<Product, Long> availableGoods;
 
     public Store() {
-        this.availableGoods = new HashMap<Product, Integer>();
+        this.availableGoods = new HashMap<Product, Long>();
         this.warehouse = new HashMap<String, Product>();
     }
 
     public void openForBusiness() {
-        storeBalance = 100000;
+        storeBalance = 1_0000_00;
         Console console=new Console();
         System.out.println("We're open come on in!!");
         String item = "Meat";
         Product meat = new Meat("Meat", 5, 10, "fillet ", "Bison");
-      //  buyFromSupplier(item, meat);
-       // addToStore(item, 10);
-        ;
-        console.warehouseOptions(this);
-// console.onDisplayOptions(this,item,meat)
+          buyFromSupplier(item, meat);
+         addToStore(item, 10);
+       // console.storeMenu();
+        //  console.warehouseOptions(this);
+        console.onDisplayOptions(this,item,meat);
+
+        System.out.println("Have a nice day");
 
     }
 
@@ -53,7 +55,7 @@ public class Store {
         System.out.println("Store: " + this);
     }
 
-    private void addToStore(String item, int price) {
+    private void addToStore(String item, long price) {
         availableGoods.put(warehouse.get(item), price);
         warehouse.remove(item);
     }
