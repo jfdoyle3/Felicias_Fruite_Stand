@@ -18,8 +18,8 @@ public class Main {
     public static void main(String[] args) {
 
         Store market=new Store();
-       // market.openForBusiness();
-          market.basicStore();
+        market.openForBusiness();
+        //  market.basicStore();
 
 
 
