@@ -1,2 +1,2 @@
-# Felicias_Fruite_Stand_4.0
+# Felicias_Fruite_Stand
 ----------------------------
