@@ -20,9 +20,7 @@ public class Meat extends Product {
         return "Meat{" +
                 "cutStyle='" + cutStyle + '\'' +
                 ", animal='" + animal + '\'' +
-                ", type='" + type + '\'' +
-                ", inventoryAmount=" + inventoryAmount +
-                ", supplierCost=" + supplierCost +
+                super.toString()+
                 '}';
     }
 }

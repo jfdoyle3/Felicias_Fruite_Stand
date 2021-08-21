@@ -25,31 +25,41 @@ public class Console {
     public static void warehouseOptions(Store store) {
         boolean exit = true;
         while (exit) {
-            System.out.println("Options:\n1. Show Inventory\n2. Buy from Supplier\n3. Trash bad inventory\n4. Add to Display\n5. Quit");
+            System.out.println("Options:");
+            System.out.println("1. Show Inventory\t\tWarehouse");
+            System.out.println("2. Buy from Supplier\t\t apples");
+            System.out.println("3. Trash bad inventory\t\t beef");
+            System.out.println("4. Add to Stand\t\tlettuce");
+            System.out.println("5. Quit");
             System.out.print("\nChoice? ");
-            int selection = input.nextInt();
-            switch (selection) {
-                case 1:
-                    System.out.println(store.toString());
-                    break;
-                case 2: {
-                    supplierTransaction(store);
-                    break;
-                }
-                case 3:
-                    System.out.println("remove from inventory");
-                    // store.removeFromWarehouse();
-                    break;
-                case 4:
-                    System.out.println("Add to Display");
-                    break;
-                case 5:
-                    exit = false;
-                    break;
-                default:
-                    System.out.println("invalid selection - try again");
-            }
+            exit = warehouseInput(store, exit);
         }
+    }
+
+    private static boolean warehouseInput(Store store, boolean exit) {
+        int selection = input.nextInt();
+        switch (selection) {
+            case 1:
+                System.out.println(store.toString());
+                break;
+            case 2: {
+                supplierTransaction(store);
+                break;
+            }
+            case 3:
+                System.out.println("remove from inventory");
+                // store.removeFromWarehouse();
+                break;
+            case 4:
+                System.out.println("Add to Display");
+                break;
+            case 5:
+                exit = false;
+                break;
+            default:
+                System.out.println("invalid selection - try again");
+        }
+        return exit;
     }
 
     private static void supplierTransaction(Store store) {
