@@ -26,9 +26,9 @@ public class Console {
         boolean exit = true;
         while (exit) {
             System.out.println("Options:");
-            System.out.println("1. Show Inventory\t\tWarehouse");
-            System.out.println("2. Buy from Supplier\t\t apples");
-            System.out.println("3. Trash bad inventory\t\t beef");
+            System.out.println("1. Show Inventory");
+            System.out.println("2. Buy from Supplier");
+            System.out.println("3. Trash bad inventory");
             System.out.println("4. Add to Stand\t\tlettuce");
             System.out.println("5. Quit");
             System.out.print("\nChoice? ");
