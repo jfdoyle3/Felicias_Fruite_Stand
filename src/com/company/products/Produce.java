@@ -12,13 +12,16 @@ public class Produce extends Product {
         this.produceName=produceName;
     }
 
+    public String getProduceName() {
+        return produceName;
+    }
 
     @Override
     public String toString() {
         return "Produce{" +
-                "produceName='" + produceName + '\'' +
+                "produceName: '" + produceName + '\'' +
                 ", type='" + type + '\'' +
-                ", inventoryAmount=" + inventoryAmount +
+                ", inventoryAmount: " + inventoryAmount +
                 ", supplierCost=" + supplierCost +
                 '}';
     }

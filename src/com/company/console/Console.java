@@ -22,21 +22,23 @@ public class Console {
 
     private static Scanner input = new Scanner(System.in);
 
-    public static void warehouseOptions(Store store) {
+    public static void menuOptions(Store store) {
         boolean exit = true;
         while (exit) {
             System.out.println("Options:");
             System.out.println("1. Show Inventory");
             System.out.println("2. Buy from Supplier");
-            System.out.println("3. Trash bad inventory");
-            System.out.println("4. Add to Stand\t\tlettuce");
-            System.out.println("5. Quit");
+            System.out.println("3. Move product to stand");
+            System.out.println("4. Trash bad inventory");
+            System.out.println("5. Cash Register");
+            System.out.println("6. Quit");
             System.out.print("\nChoice? ");
-            exit = warehouseInput(store, exit);
+            exit = menuChoice(store, exit);
+
         }
     }
 
-    private static boolean warehouseInput(Store store, boolean exit) {
+    private static boolean menuChoice(Store store, boolean exit){
         int selection = input.nextInt();
         switch (selection) {
             case 1:
@@ -47,13 +49,18 @@ public class Console {
                 break;
             }
             case 3:
-                System.out.println("remove from inventory");
+                System.out.println("move inventory");
                 // store.removeFromWarehouse();
                 break;
             case 4:
-                System.out.println("Add to Display");
+                System.out.println("remove inventory");
                 break;
             case 5:
+             //   System.out.println("How many? qty: " + product.getInventoryAmount());
+                int qty = input.nextInt();
+            //    store.buyFromStore(product, qty);
+                break;
+            case 6:
                 exit = false;
                 break;
             default:
@@ -61,6 +68,7 @@ public class Console {
         }
         return exit;
     }
+
 
     private static void supplierTransaction(Store store) {
         List<Product> inventory = supplierInventory();
@@ -72,30 +80,7 @@ public class Console {
         System.out.println(store.toString());
     }
 
-    public static void onDisplayOptions(Store store, String item, Product product) {
-        boolean exit = true;
-        while (exit) {
-            System.out.println("Options:\n1. Show Goods\n2. Cash Register\n3. Quot");
-            System.out.print("\nChoice? ");
-            int selection = input.nextInt();
-            switch (selection) {
-                case 1:
-                    System.out.println(store.toString());
-                    break;
-                case 2: {
-                    System.out.println("How many? qty: " + product.getInventoryAmount());
-                    int qty = input.nextInt();
-                    store.buyFromStore(product, qty);
-                    break;
-                }
-                case 3:
-                    exit = false;
-                default:
-                    System.out.println("invalid selection - try again");
-            }
 
-        }
-    }
 
     private static List<Product> supplierInventory() {
         List<Product> products = new ArrayList<>();

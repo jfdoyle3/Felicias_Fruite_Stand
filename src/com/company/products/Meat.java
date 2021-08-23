@@ -14,6 +14,13 @@ public class Meat extends Product {
         this.cutStyle=cutStyle;
     }
 
+    public String getCutStyle() {
+        return cutStyle;
+    }
+
+    public String getAnimal() {
+        return animal;
+    }
 
     @Override
     public String toString() {

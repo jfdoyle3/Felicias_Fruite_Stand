@@ -5,6 +5,8 @@ import com.company.products.Meat;
 import com.company.products.Product;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Store {
 
@@ -24,10 +26,12 @@ public class Store {
         String item = "Meat";
         Product meat = new Meat("Meat", 5, 10, "fillet ", "Bison");
           buyFromSupplier(item, meat);
-         addToStore(item, 10);
+        //   addToStore(item, 10);
        // console.storeMenu();
         //  console.warehouseOptions(this);
-        console.onDisplayOptions(this,item,meat);
+        // console.onDisplayOptions(this,item,meat);
+        this.getWarehouseList();
+       // console.menuOptions(this);
 
         System.out.println("Have a nice day");
 
@@ -83,7 +87,16 @@ public class Store {
             availableGoods.remove(product);
         }
     }
+    public  void  getWarehouseList(){
+        for(Map.Entry<String,Product> entry : warehouse.entrySet()){
+            Product value=entry.getValue();
+            String key=entry.getKey();
+            System.out.println("Key: "+key+"   Value: "+value.toString()+"\n");
+        }
 
+       // return null;
+
+    }
 
     @Override
     public String toString() {
