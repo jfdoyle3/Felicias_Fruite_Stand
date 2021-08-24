@@ -38,27 +38,26 @@ public class Console {
         }
     }
 
-    private static boolean menuChoice(Store store, boolean exit){
+    private static boolean menuChoice(Store store, boolean exit) {
         int selection = input.nextInt();
         switch (selection) {
             case 1:
                 System.out.println(store.toString());
                 break;
-            case 2: {
+            case 2:
                 supplierTransaction(store);
                 break;
-            }
             case 3:
-                System.out.println("move inventory");
-                // store.removeFromWarehouse();
+                //System.out.println("move inventory");
+                store.removeFromWarehouse();
                 break;
             case 4:
                 System.out.println("remove inventory");
                 break;
             case 5:
-             //   System.out.println("How many? qty: " + product.getInventoryAmount());
+                //   System.out.println("How many? qty: " + product.getInventoryAmount());
                 int qty = input.nextInt();
-            //    store.buyFromStore(product, qty);
+                //    store.buyFromStore(product, qty);
                 break;
             case 6:
                 exit = false;
@@ -79,7 +78,6 @@ public class Console {
         store.buyFromSupplier(choice, inventory.get(item));
         System.out.println(store.toString());
     }
-
 
 
     private static List<Product> supplierInventory() {
@@ -155,6 +153,6 @@ public class Console {
         }
 
     }
-    
+
 }
 

@@ -30,8 +30,8 @@ public class Store {
        // console.storeMenu();
         //  console.warehouseOptions(this);
         // console.onDisplayOptions(this,item,meat);
-        this.getWarehouseList();
-       // console.menuOptions(this);
+      //  this.getWarehouseList();
+        console.menuOptions(this);
 
         System.out.println("Have a nice day");
 
@@ -64,8 +64,13 @@ public class Store {
         warehouse.remove(item);
     }
 
-    public void removeFromWarehouse(String item) {
-        warehouse.remove(item);
+    public void removeFromWarehouse() {
+        for(Map.Entry<String,Product> entry : warehouse.entrySet()) {
+            Product value = entry.getValue();
+            String key = entry.getKey();
+            System.out.println("Key: " + key + "   Value: " + value.toString() + "\n");
+        }
+      //  warehouse.remove();
     }
 
     private void removeFromStore(Product product) {
