@@ -11,13 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-/*
-    runs a user interface for the cashier.
-    is given options to:
-    add products to the store.
-    throw away bad products
-    sell products to a client.
- */
 public class Console {
 
     private static Scanner input = new Scanner(System.in);
@@ -128,31 +121,6 @@ public class Console {
             System.out.println(product);
     }
 
-    public static void storeMenu() {
-        boolean exit = true;
-        while (exit) {
-            System.out.println("Manager Store\n1. Warehouse manager\n2. Store manager\n3. Quit");
-            System.out.print("\nChoice? ");
-            int choice = input.nextInt();
-            switch (choice) {
-                case 1:
-                    // warehouseOptions(store);
-                    System.out.println("warehouse");
-                    break;
-                case 2:
-                    // onDisplayOptions(store, product);
-                    System.out.println("sales floor");
-                    break;
-                case 3:
-                    exit = false;
-                    break;
-                default:
-                    System.out.println("invalid choice");
-            }
-
-        }
-
-    }
 
 }
 
